@@ -2,18 +2,41 @@ pipeline {
   agent any
   stages {
     stage('Creation of Infrastructure') {
-      steps {
-        echo "User: ${username} said Ok."
+      stages {
+         stage('Creation of backend server') {
+           steps {
+            echo "User: said Ok."
+          }
+        }
+        stage('Creation of client server') {
+           steps {
+            echo "User: said Ok."
+          }
+        }
+         stage('Creation of procees server') {
+           steps {
+            echo "User: said Ok."
+          }
+        }
       }
     }
     stage('Scripts Configuration') {
-      steps {
-        catchError()
+      stages {
+         stage('Creation of backend server') {
+           steps {
+            echo "User: said Ok."
+          }
+        }
+        stage('Creation of client server') {
+           steps {
+            echo "User: said Ok."
+          }
+        }
       }
     }
     stage('Collector metrics') {
       steps {
-        sshPublisher()
+       echo "User: said Ok."
       }
     }
   }
