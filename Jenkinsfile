@@ -16,4 +16,5 @@ pipeline {
                 echo "User: ${username} said Ok."
           }
         }
+ }
 }
