@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
     stage('Set Parammeter') {
-      parallel {
+ 
         stage('Set Parammeter') {
           steps {
             echo 'Building..'
@@ -15,7 +15,7 @@ pipeline {
             sh 'echo "bitxh"'
           }
         }
-      }
+      
     }
   }
   options {
