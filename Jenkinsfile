@@ -13,23 +13,20 @@ pipeline {
                 echo 'Building..'
             }
         }
-        stage(''Creation of Infrastructure') {
+        stage('Test') {
             failFast true
             parallel {
-                stage('Creation of backend server') {
+                stage('Branch A') {
                     steps {
                         echo "On Branch A"
                     }
                 }
-                stage('Creation of client server) {
-                    steps {
-                        echo "On Branch B"
-                    }
+                stage('Branch B') {
                     steps {
                         echo "On Branch B"
                     }
                 }
-                stage('Creation of procees server') {
+                stage('Branch C') {
                     stages {
                         stage('Nested 1') {
                             steps {
