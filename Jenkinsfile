@@ -11,6 +11,11 @@ pipeline {
         catchError()
       }
     }
+    stage('Collector metrics') {
+      steps {
+        sshPublisher()
+      }
+    }
   }
   options {
     buildDiscarder(logRotator(numToKeepStr: '50'))
