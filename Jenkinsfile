@@ -7,10 +7,6 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr:'50'))
   }
 
-  environment {
-		OUTPUT_PATH = './outputs/'
-	}
-
  stages {
         stage('Set Parammeter') {
 
@@ -28,19 +24,10 @@ pipeline {
                 echo "User: ${username} said Ok."
           }
         }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
     }
      post {
         always {
              echo "Send notifications for result: ${currentBuild.result}"
     }
   }
-}
-
-
 }
