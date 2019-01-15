@@ -8,12 +8,12 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr:'10'))
   }
     stages {
-        stage('Build') {
+        stage('SET PARAMETERS') {
             steps {
                 echo 'Building..'
             }
         }
-        stage('Test') {
+        stage('CREATING INFRASTRUCTURE') {
             failFast true
             parallel {
                 stage('Branch A') {
