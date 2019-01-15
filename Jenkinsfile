@@ -7,6 +7,7 @@ pipeline {
           steps {
             echo 'Building..'
             echo "User: ${username} said Ok."
+            input(message: 'Please into to the parameter', id: 'id', ok: 'save')
           }
         }
         stage('test') {
