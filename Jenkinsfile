@@ -55,6 +55,17 @@ pipeline {
                 }
 
             }
+            steps {
+                // Git checkout before load source the file
+                echo "Pipeline second by ${params.MULE_BUILD}"
+               
+                //def props = readProperties interpolate: true, file: 'test.properties''
+
+                 script {
+                    setUpRuntumeVersion()
+                }
+
+            }
          }
 
     }
