@@ -45,9 +45,13 @@ pipeline {
          stage('Prepared to the runtime') {
              steps {
                 // Git checkout before load source the file
-                echo "Pipeline triggered by ${params.LOCATION_APP}"
-                assert params.LOCATION_APP == 'my datas'
-                //ddef props = readProperties interpolate: true, file: 'test.properties''
+                echo "Pipeline triggered by ${params.MULE_BUILD}"
+               
+                //def props = readProperties interpolate: true, file: 'test.properties''
+
+                 script {
+                    runTestCombinations()
+                }
 
             }
          }
@@ -55,7 +59,8 @@ pipeline {
     }
 }
 
-def downloadRuntumeVersion(mule_build) {
+def downloadRuntumeVersion() {
    //Conected for ssh to the server 
-    
+   echo "Download mule runtime version ===> ${params.MULE_BUILD}"
+   sh "wget  https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/3.5.0/mule-standalone-3.5.0.tar.gz"
 }
