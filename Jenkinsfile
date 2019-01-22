@@ -1,7 +1,7 @@
 pipeline {
     agent any
      triggers {
-        cron('H */4 * * 1-5')
+       // cron('H */4 * * 1-5')
     }
     options {
        // ansiColor('xterm')
@@ -62,5 +62,7 @@ pipeline {
 def downloadRuntumeVersion() {
    //Conected for ssh to the server 
    echo "Download mule runtime version ===> ${params.MULE_BUILD}"
+   //TODO it's necesary add credential with private nexus
    sh "wget  https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/3.5.0/mule-standalone-3.5.0.tar.gz"
+   Unzip "${pwd()}/mule-standalone-3.5.0.tar.gz"
 }
