@@ -44,31 +44,21 @@ pipeline {
     }
     stages {
          stage('Prepared to the runtime') {
-             stage ('Download to the runtime'){
-                steps {
-                    // Git checkout before load source the file
-                    echo "Pipeline triggered by ${params.MULE_BUILD}"
+             steps {
+                // Git checkout before load source the file
+                echo "Pipeline triggered by ${params.MULE_BUILD}"
                
-                    //def props = readProperties interpolate: true, file: 'test.properties''
+                //def props = readProperties interpolate: true, file: 'test.properties''
 
-                    script {
-                        downloadRuntumeVersion()
-                    }
+                 script {
+                    downloadRuntumeVersion()
+                    setUpRuntumeVersion()
                 }
-            }
-            stage ('Setup to the runtime') {
-                steps {
-                    // Git checkout before load source the file
-                    echo "setup second by ${params.MULE_BUILD}"
-               
-                    //def props = readProperties interpolate: true, file: 'test.properties''
 
-                    script {
-                        setUpRuntumeVersion()
-                    }
-                }
             }
+            
          }
+
     }
 }
 
