@@ -1,3 +1,5 @@
+import java.util.zip.*
+
 pipeline {
     agent any
      //triggers {
@@ -60,9 +62,31 @@ pipeline {
 }
 
 def downloadRuntumeVersion() {
+    try{
    //Conected for ssh to the server 
    echo "Download mule runtime version ===> ${params.MULE_BUILD}"
    //TODO it's necesary add credential with private nexus
    sh "wget  https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/3.5.0/mule-standalone-3.5.0.tar.gz"
-   unzip "${pwd()}/mule-standalone-3.5.0.tar.gz"
+  
+    def zip = new ZipFile(new File("${pwd()}/mule-standalone-3.5.0.tar.gz"))
+    zip.entries().each{  
+        if (!it.isDirectory()){
+            def fOut = new File(outputDir+ File.separator + it.name)
+            //create output dir if not exists
+            new File(fOut.parent).mkdirs()
+            def fos = new FileOutputStream(fOut)
+            //println "name:${it.name}, size:${it.size}"
+            def buf = new byte[it.size]
+            def len = zip.getInputStream(it).read(buf) //println zip.getInputStream(it).text
+            fos.write(buf, 0, len)
+            fos.close()
+        }
+    }
+    zip.close()
+  
+   //Unzip "${pwd()}/mule-standalone-3.5.0.tar.gz"
+
+    }catch {
+        echo "Error Download mule runtime version ===> ${params.MULE_BUILD}"
+    }
 }
