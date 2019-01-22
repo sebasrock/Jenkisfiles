@@ -4,6 +4,7 @@ pipeline {
         cron('H */4 * * 1-5')
     }
     options {
+       // ansiColor('xterm')
         timeout(time: 6, unit: 'HOURS')
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
@@ -41,12 +42,12 @@ pipeline {
     }
     stages {
          stage('Checkout Librarys') {
-            
-              @Step(title='List files')
-              echo "Pipeline triggered by ${params.LOCATION_APP}"
+             "This is my step name" {
+                // Git checkout before load source the file
+                echo "Pipeline triggered by ${params.LOCATION_APP}"
 
-             @Step(title='Do something')
-             aStep 'do something'
+            }
          }
+
     }
 }
