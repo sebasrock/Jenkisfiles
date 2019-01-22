@@ -4,7 +4,6 @@ pipeline {
         cron('H */4 * * 1-5')
     }
     options {
-        ansiColor('xterm')
         timeout(time: 6, unit: 'HOURS')
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
