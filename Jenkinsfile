@@ -50,7 +50,7 @@ pipeline {
                 //def props = readProperties interpolate: true, file: 'test.properties''
 
                  script {
-                    runTestCombinations()
+                    downloadRuntumeVersion()
                 }
 
             }
