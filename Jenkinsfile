@@ -52,6 +52,9 @@ pipeline {
 
                  script {
                     downloadRuntumeVersion()
+                }
+
+                script {
                     setUpRuntumeVersion()
                 }
 
