@@ -28,9 +28,7 @@ pipeline {
         string(name: 'PORT_APP',description:' Port to the application')
         string(name: 'BACKEND_PATH', defaultValue: '1KB.payload', description:'e.g. 10B.payload 1KB.payload 10KB.payload 100KB.payload 1MB.payload')
         string(name: 'BACKEND_DELAY_IN_MS', defaultValue: '70', description:'e.g. Default: 70 Adds a fixed delay in milliseconds to the VertX backend response')
-        booleanParam(name: 'FLOWSTACK_ENABLED', defaultValue: false, description: '')
-        choice(name: 'JDK', choices: ['one', 'two', 'three'], description: '')
-        choice(name: 'GC', choices: ['one', 'two', 'three'], description: '')  
+        
 
         // Mule parameters
         string(name: 'MULE_BUILD', defaultValue: 'DEFAULT',
@@ -38,11 +36,14 @@ pipeline {
                                 mule-enterprise-standalone-4.1.4
                                 mule-enterprise-standalone-4.1.5
                                 mule-enterprise-standalone-4.1.6-SNAPSHOT''')
+        booleanParam(name: 'FLOWSTACK_ENABLED', defaultValue: false, description: '')
+        choice(name: 'JDK', choices: ['one', 'two', 'three'], description: '')
+        choice(name: 'GC', choices: ['one', 'two', 'three'], description: '')  
     
     }
     stages {
          stage('Checkout Librarys') {
-             "This is my step name" {
+             steps {
                 // Git checkout before load source the file
                 echo "Pipeline triggered by ${params.LOCATION_APP}"
 
