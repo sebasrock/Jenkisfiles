@@ -62,7 +62,7 @@ pipeline {
 }
 
 def downloadRuntumeVersion() {
-    try{
+    
    //Conected for ssh to the server 
    echo "Download mule runtime version ===> ${params.MULE_BUILD}"
    //TODO it's necesary add credential with private nexus
@@ -86,7 +86,4 @@ def downloadRuntumeVersion() {
   
    //Unzip "${pwd()}/mule-standalone-3.5.0.tar.gz"
 
-    }catch {
-        echo "Error Download mule runtime version ===> ${params.MULE_BUILD}"
-    }
 }
