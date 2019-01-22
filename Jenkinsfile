@@ -5,7 +5,7 @@ pipeline {
     }
     options {
        // ansiColor('xterm')
-        timeout(time: 6, unit: 'HOURS')
+        // timeout(time: 6, unit: 'HOURS')
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
     parameters {
@@ -42,13 +42,20 @@ pipeline {
     
     }
     stages {
-         stage('Checkout Librarys') {
+         stage('Prepared to the runtime') {
              steps {
                 // Git checkout before load source the file
                 echo "Pipeline triggered by ${params.LOCATION_APP}"
+                assert params.LOCATION_APP == 'my datas'
+                //ddef props = readProperties interpolate: true, file: 'test.properties''
 
             }
          }
 
     }
+}
+
+def downloadRuntumeVersion(mule_build) {
+   //Conected for ssh to the server 
+    
 }
