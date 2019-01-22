@@ -68,7 +68,17 @@ def downloadRuntumeVersion() {
     sh "wget  https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/3.5.0/mule-standalone-3.5.0.tar.gz"
   
     sh "tar xvzf ${pwd()}/mule-standalone-3.5.0.tar.gz"
-  
-   //Unzip "${pwd()}/mule-standalone-3.5.0.tar.gz"
 
+}
+
+def setUpRuntumeVersion() {
+    
+   //Conected for ssh to the server 
+   echo "SetUp mule runtime version ===> ${params.MULE_BUILD}"
+   //TODO it's necesary add credential with private nexus
+    sh "cd /mule-standalone-3.5.0/conf"
+  
+   def readContent = readFile 'wrapper.conf'
+   writeFile file: 'build.conf', text: readContent+"\r\nversion := 1.0.${env.BUILD_ID}"
+  
 }
