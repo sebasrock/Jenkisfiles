@@ -43,7 +43,7 @@ pipeline {
          stage('Checkout Librarys') {
             
               @Step(title='List files')
-              sh 'ls -l'
+              echo "Pipeline triggered by ${params.LOCATION_APP}"
 
              @Step(title='Do something')
              aStep 'do something'
