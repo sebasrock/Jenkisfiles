@@ -41,12 +41,12 @@ pipeline {
     }
     stages {
          stage('Checkout Librarys') {
-             steps {
-                // Git checkout before load source the file
-                echo "Pipeline triggered by ${params.LOCATION_APP}"
+            
+              @Step(title='List files')
+              sh 'ls -l'
 
-            }
+             @Step(title='Do something')
+             aStep 'do something'
          }
-
     }
 }
