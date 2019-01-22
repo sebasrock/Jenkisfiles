@@ -81,7 +81,7 @@ def setUpRuntumeVersion() {
    //Conected for ssh to the server 
    echo "SetUp mule runtime version ===> ${params.MULE_BUILD}"
    //TODO it's necesary add credential with private nexus
-    sh "cd /mule-standalone-3.5.0/conf"
+   //sh "cd /mule-standalone-3.5.0/conf"
 
    echo " ===> ${pwd()}"
   
