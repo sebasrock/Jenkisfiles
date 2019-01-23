@@ -43,7 +43,7 @@ pipeline {
     
     }
     stages {
-         stage('Prepared to the runtime') {
+         stage('download to the runtime') {
              steps {
                 // Git checkout before load source the file
                 echo "Pipeline triggered by ${params.MULE_BUILD}"
@@ -53,10 +53,19 @@ pipeline {
                  script {
                     downloadRuntumeVersion()
                 }
-
+            }
+         }
+        stage('SetUp the runtime') {
+             steps {
                 script {
                     setUpRuntumeVersion()
                 }
+
+            }
+            
+         }
+           stage('start the runtime') {
+             steps {
                 script {
                     startRuntime()
                 }
