@@ -87,6 +87,6 @@ def setUpRuntumeVersion() {
   
    def readContent = readFile './mule-standalone-3.5.0/conf/wrapper.conf'
 
-   writeFile file: 'build.conf', text: readContent+"\r\nversion := 1.0.${env.BUILD_ID}"
+   writeFile file: './mule-standalone-3.5.0/conf/wrapper.conf', text: readContent+"\r\r\r\n############### ADD BY JOB #########################\r\r\nwrapper.java.additional.99=-Dmule.flowTrace=TRUE"
   
 }
