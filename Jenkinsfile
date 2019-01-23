@@ -57,6 +57,9 @@ pipeline {
                 script {
                     setUpRuntumeVersion()
                 }
+                script {
+                    startRuntime()
+                }
 
             }
             
@@ -92,7 +95,15 @@ def setUpRuntumeVersion() {
 //TODO get consecutive number from the conte file
 
    if (params.FLOWSTACK_ENABLED) {
+     def readContent = readFile './mule-standalone-3.5.0/conf/wrapper.conf'
      writeFile file: './mule-standalone-3.5.0/conf/wrapper.conf', text: readContent+"\r\nwrapper.java.additional.99=-Dmule.flowTrace=TRUE"
    }
-  
+}
+
+def startRuntime() {
+    
+   //Conected for ssh to the server 
+    echo "startRuntime mule runtime version ===> ${params.MULE_BUILD}"
+   
+    sh "sh ./mule-standalone-3.5.0/bin/mule"
 }
