@@ -84,7 +84,7 @@ def downloadRuntumeVersion() {
    //TODO it's necesary add credential with private nexus
     //sh "wget  https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/3.5.0/mule-standalone-3.5.0.tar.gz"
     sh " curl -u perf.test:h_-3LpBfW2UZUwPd https://repository.mulesoft.org/nexus/content/groups/private/com/mulesoft/mule/distributions/mule-ee-distribution-standalone/4.2.0-SNAPSHOT/mule-ee-distribution-standalone-4.2.0-20190124.201409-3098.tar.gz -O -J -L"
-    sh "tar xvzf ${pwd()}/mule-standalone-3.5.0.tar.gz"
+    sh "tar xvzf ${pwd()}/mule-ee-distribution-standalone-4.2.0-20190124.201409-3098.tar.gz"
 
 }
 
@@ -97,15 +97,15 @@ def setUpRuntumeVersion() {
 
    echo " ===> ${pwd()}"
   
-   def readContent = readFile './mule-standalone-3.5.0/conf/wrapper.conf'
+   def readContent = readFile './mule-ee-distribution-standalone-4.2.0-20190124.201409-3098/conf/wrapper.conf'
 
-   writeFile file: './mule-standalone-3.5.0/conf/wrapper.conf', text: readContent+"\r\r\r\n############### ADD BY JOB #########################"
+   writeFile file: './mule-ee-distribution-standalone-4.2.0-20190124.201409-3098/conf/wrapper.conf', text: readContent+"\r\r\r\n############### ADD BY JOB #########################"
 
 //TODO get consecutive number from the conte file
 
    if (params.FLOWSTACK_ENABLED) {
-    readContent = readFile './mule-standalone-3.5.0/conf/wrapper.conf'
-     writeFile file: './mule-standalone-3.5.0/conf/wrapper.conf', text: readContent+"\r\nwrapper.java.additional.99=-Dmule.flowTrace=TRUE"
+    readContent = readFile './mule-ee-distribution-standalone-4.2.0-20190124.201409-3098/conf/wrapper.conf'
+     writeFile file: './mule-ee-distribution-standalone-4.2.0-20190124.201409-3098/conf/wrapper.conf', text: readContent+"\r\nwrapper.java.additional.99=-Dmule.flowTrace=TRUE"
    }
 }
 
@@ -114,5 +114,5 @@ def startRuntime() {
    //Conected for ssh to the server 
     echo "startRuntime mule runtime version ===> ${params.MULE_BUILD}"
    
-    sh "sh ./mule-standalone-3.5.0/bin/mule"
+    sh "sh ./mule-ee-distribution-standalone-4.2.0-20190124.201409-3098/bin/mule"
 }
