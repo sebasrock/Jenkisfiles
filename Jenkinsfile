@@ -83,7 +83,7 @@ def downloadRuntumeVersion() {
    echo "Download mule runtime version ===> ${params.MULE_BUILD}"
    //TODO it's necesary add credential with private nexus
     //sh "wget  https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/3.5.0/mule-standalone-3.5.0.tar.gz"
-    sh "wget  --user=perf.test --password=h_-3LpBfW2UZUwPd  https://repository.mulesoft.org/nexus/content/groups/private/com/mulesoft/mule/distributions/mule-ee-distribution-standalone/4.2.0-SNAPSHOT/mule-ee-distribution-standalone-4.2.0-20190124.201409-3098.tar.gz"
+    sh " curl -u perf.test:h_-3LpBfW2UZUwPd https://repository.mulesoft.org/nexus/content/groups/private/com/mulesoft/mule/distributions/mule-ee-distribution-standalone/4.2.0-SNAPSHOT/mule-ee-distribution-standalone-4.2.0-20190124.201409-3098.tar.gz -O -J -L"
     sh "tar xvzf ${pwd()}/mule-standalone-3.5.0.tar.gz"
 
 }
