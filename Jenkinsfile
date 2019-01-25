@@ -114,5 +114,5 @@ def startRuntime() {
    //Conected for ssh to the server 
     echo "startRuntime mule runtime version ===> ${params.MULE_BUILD}"
    
-    sh "sh ./mule-enterprise-standalone-4.2.0-SNAPSHOT/bin/mule"
+    sh "sh ./mule-enterprise-standalone-4.2.0-SNAPSHOT/bin/mule  > result"
 }
