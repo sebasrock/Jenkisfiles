@@ -73,6 +73,15 @@ pipeline {
             }
             
          }
+            stage('downdload the app') {
+             steps {
+                script {
+                    downloadApp()
+                }
+
+            }
+            
+         }
 
     }
 }
@@ -85,6 +94,8 @@ def downloadRuntumeVersion() {
     //sh "wget  https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/3.5.0/mule-standalone-3.5.0.tar.gz"
     sh " curl -u perf.test:h_-3LpBfW2UZUwPd https://repository.mulesoft.org/nexus/content/groups/private/com/mulesoft/mule/distributions/mule-ee-distribution-standalone/4.2.0-SNAPSHOT/mule-ee-distribution-standalone-4.2.0-20190124.201409-3098.tar.gz -O -J -L"
     sh "tar xvzf ${pwd()}/mule-ee-distribution-standalone-4.2.0-20190124.201409-3098.tar.gz"
+
+    //dowload page withe number of rumtime and just dowload the last
 
 }
 
@@ -110,9 +121,32 @@ def setUpRuntumeVersion() {
 }
 
 def startRuntime() {
+    try{
     
    //Conected for ssh to the server 
     echo "startRuntime mule runtime version ===> ${params.MULE_BUILD}"
    
-    sh "sh ./mule-enterprise-standalone-4.2.0-SNAPSHOT/bin/mule  > result"
+    sh "sh ./mule-enterprise-standalone-4.2.0-SNAPSHOT/bin/mule  > startRun.log"
+
+    sleep 30s
+
+    def existLogMuleEE = fileExists './mule-enterprise-standalone-4.2.0-SNAPSHOT/logs/mule_ee.log'
+
+    }catch {
+        echo "Error while  starting Mule Runtime"
+    }
+}
+
+def downloadApp() {
+    
+   //Conected for ssh to the server 
+   //git fetch 
+   //git pull
+   //SCP app
+    //git archive --format tar --remote ssh://server.org/path/to/git HEAD docs/usage > /tmp/usage_docs.tgz
+    sh "cp -avr /Users/ssanchezc/Documents/mule/repository/performanceworks/APPS/Mule4/4.2.0-SNAPSHOT/FLOW-STACK/http-proxy-flowref ./mule-enterprise-standalone-4.2.0-SNAPSHOT/apps/"
+
+    sleep 30
+
+    def existLogMuleEE = fileExists './mule-enterprise-standalone-4.2.0-SNAPSHOT/logs/mule_ee.log'
 }
