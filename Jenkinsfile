@@ -131,7 +131,7 @@ def startRuntime() {
     sleep 30s
 
     def existLogMuleEE = fileExists './mule-enterprise-standalone-4.2.0-SNAPSHOT/logs/mule_ee.log'
-
+    echo "${existLogMuleEE}"
 
 }
 
@@ -142,7 +142,7 @@ def downloadApp() {
    //git pull
    //SCP app
     //git archive --format tar --remote ssh://server.org/path/to/git HEAD docs/usage > /tmp/usage_docs.tgz
-    sh "cp -avr /Users/ssanchezc/Documents/mule/repository/performanceworks/APPS/Mule4/4.2.0-SNAPSHOT/FLOW-STACK/http-proxy-flowref ./mule-enterprise-standalone-4.2.0-SNAPSHOT/apps/"
+    sh "cp -avr /Users/ssanchezc/Documents/mule/repository/performanceworks/APPS/Mule4/4.2.0-SNAPSHOT/FLOW-STACK/http-proxy-flowref ./mule-enterprise-standalone-4.2.0-SNAPSHOT/apps"
 
     sleep 30
 
