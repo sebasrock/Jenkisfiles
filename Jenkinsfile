@@ -130,8 +130,8 @@ def startRuntime() {
 
     sleep 30s
 
-    def existLogMuleEE = fileExists './mule-enterprise-standalone-4.2.0-SNAPSHOT/logs/mule_ee.log'
-    echo "${existLogMuleEE}"
+    //def existLogMuleEE = fileExists './mule-enterprise-standalone-4.2.0-SNAPSHOT/logs/mule_ee.log'
+    //echo "${existLogMuleEE}"
 
 }
 
@@ -146,5 +146,5 @@ def downloadApp() {
 
     sleep 30
 
-    def existLogMuleEE = fileExists './mule-enterprise-standalone-4.2.0-SNAPSHOT/logs/mule_ee.log'
+    //def existLogMuleEE = fileExists './mule-enterprise-standalone-4.2.0-SNAPSHOT/logs/mule_ee.log'
 }
