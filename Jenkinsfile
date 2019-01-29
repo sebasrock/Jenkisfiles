@@ -121,7 +121,7 @@ def setUpRuntumeVersion() {
 }
 
 def startRuntime() {
-    try{
+   
     
    //Conected for ssh to the server 
     echo "startRuntime mule runtime version ===> ${params.MULE_BUILD}"
@@ -132,9 +132,7 @@ def startRuntime() {
 
     def existLogMuleEE = fileExists './mule-enterprise-standalone-4.2.0-SNAPSHOT/logs/mule_ee.log'
 
-    }catch {
-        echo "Error while  starting Mule Runtime"
-    }
+
 }
 
 def downloadApp() {
